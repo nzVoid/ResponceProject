@@ -15,8 +15,16 @@ class Programm
                 Console.Clear();
                 Console.Write("Enter radius of circle: ");
                 double rad = Convert.ToDouble(Console.ReadLine());
-                var answer = AreaCalculation.circle(rad);
-                Console.WriteLine(answer);
+                if (rad > 0)
+                {
+                    var answer = AreaCalculation.circle(rad);
+                    Console.WriteLine(answer);
+                }
+                else
+                {
+                    Console.WriteLine("Radius can't be less than zero");
+                }
+                
                 break;
             case 2:
                 Console.Clear();
@@ -27,16 +35,24 @@ class Programm
                 double b = Convert.ToDouble(Console.ReadLine());
                 Console.Write("Enter c: ");
                 double c = Convert.ToDouble(Console.ReadLine());
-                if(AreaCalculation.rightTriangle(a, b, c) == true)
+                if (a>0 && b>0 && c>0)
                 {
-                    Console.WriteLine("Triangle is rectangular");
+                    if (AreaCalculation.rightTriangle(a, b, c) == true)
+                    {
+                        Console.WriteLine("Triangle is rectangular");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Triangle is not rectangular ");
+                    }
+                    double answ = AreaCalculation.triangle(a, b, c);
+                    Console.WriteLine(Convert.ToString(answ));
                 }
                 else
                 {
-                    Console.WriteLine("Triangle is not rectangular ");
+                    Console.WriteLine("Sides can't be less than zero");
                 }
-                double answ = AreaCalculation.triangle(a,b,c);
-                Console.WriteLine(Convert.ToString(answ));
+                
                 break;
         }
     }
